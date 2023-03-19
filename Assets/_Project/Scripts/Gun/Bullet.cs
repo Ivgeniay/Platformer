@@ -6,9 +6,13 @@ namespace Gun
     {
         [SerializeField] private ParticleSystem[] destroyEffect;
         [SerializeField] private float lifeTime = 2f;
+        public int Damage { get; private set; }
         
         private void Awake() {
             Destroy(gameObject, lifeTime);
+        }
+        public void SetUp(int damage) {
+            Damage = damage;
         }
 
         private void OnCollisionEnter(Collision collision) {

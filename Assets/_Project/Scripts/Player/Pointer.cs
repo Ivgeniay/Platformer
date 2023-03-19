@@ -15,8 +15,13 @@ namespace Player
         private void OnDisable() {
             Unsubscribe();
         }
+
         private void Update() {
-            aimTransform.position = InputSys.Instance.mouseWorldPosition.Value;
+            mousePosition = InputSys.Instance.mouseWorldPosition.Value;
+        }
+
+        private void LateUpdate() {
+            aimTransform.position = mousePosition;
 
             var toAimDirection = aimTransform.position - transform.position;
             transform.rotation = Quaternion.LookRotation(toAimDirection);

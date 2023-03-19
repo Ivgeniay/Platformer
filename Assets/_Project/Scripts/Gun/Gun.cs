@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace Gun
 {
-    public class AmmoGun : MonoBehaviour
+    public class Gun : MonoBehaviour
     {
         [field: SerializeField] public float Recoil { get; private set; }
 
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform spawnTransform;
         [SerializeField] private float bulletSpeed = 10f;
+        [SerializeField] private int gunDamage = 1;
         [SerializeField] private float spawnPeriod = 0.2f;
         [SerializeField] private float flashPeriod = 0.05f;
         [SerializeField] private AudioSource shootSound;
@@ -23,6 +24,7 @@ namespace Gun
         {
             if (!canShoot) return null;
             var bullet = Instantiate(bulletPrefab, spawnTransform.position, spawnTransform.rotation, null);
+            bullet.SetUp(gunDamage);
             bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
             gunTimeoutCoroutine = StartCoroutine(ShootTimerRoutine(spawnPeriod));
             flashTimeoutCoroutine = StartCoroutine(OffFlashRoutine(flashPeriod));

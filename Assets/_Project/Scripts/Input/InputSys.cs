@@ -8,7 +8,8 @@ namespace PlayerInput
     public class InputSys : MonoBehaviour
     {
         public event Action OnJumpEvent;
-        public event Action OnShootEvent;
+        public event Action OnShootingStartedEvent;
+        public event Action OnShootingEndedEvent;
         public ObservableVariable<Vector3> mouseWorldPosition = new ObservableVariable<Vector3>();
 
         private Actions inputActions;
@@ -40,10 +41,12 @@ namespace PlayerInput
             inputActions.Enable();
             inputActions.FPS.Jump.performed += JumpPerformed;
             inputActions.FPS.Shoot.performed += ShootPerformed;
+            inputActions.FPS.Shoot.canceled += ShootEndPerformed;
         }
         private void OnDisable() {
             inputActions.FPS.Jump.performed -= JumpPerformed; ;
             inputActions.FPS.Shoot.performed -= ShootPerformed;
+            inputActions.FPS.Shoot.canceled -= ShootEndPerformed;
             inputActions.Disable();
         }
         void Update() {
@@ -63,7 +66,10 @@ namespace PlayerInput
         private void JumpPerformed(InputAction.CallbackContext obj) =>
             OnJumpEvent?.Invoke();
         private void ShootPerformed(InputAction.CallbackContext obj) =>
-            OnShootEvent?.Invoke();
+            OnShootingStartedEvent?.Invoke();
+
+        private void ShootEndPerformed(InputAction.CallbackContext obj) =>
+            OnShootingEndedEvent?.Invoke();
 
     }
 }
