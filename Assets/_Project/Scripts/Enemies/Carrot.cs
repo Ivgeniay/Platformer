@@ -6,6 +6,7 @@ namespace Enemies
     internal class Carrot : MonoBehaviour
     {
         [SerializeField] private float speed;
+        [SerializeField] private float maxLifetime = 5;
         private Rigidbody rb;
 
         private void Awake()
@@ -16,6 +17,8 @@ namespace Enemies
             Vector3 toPlayer = (player.position + new Vector3(0,1,0) - transform.position).normalized;
 
             rb.velocity = toPlayer * speed;
+
+            Destroy(gameObject, maxLifetime);
         }
     }
 }
