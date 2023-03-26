@@ -21,7 +21,7 @@ namespace Effects
             image.enabled = false;
         }
 
-        public void GetEffect()
+        public void StartEffect()
         {
             StartCoroutine(StartEffectRoutine(fadeDelay));
         }

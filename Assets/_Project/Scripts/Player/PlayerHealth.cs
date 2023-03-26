@@ -1,6 +1,7 @@
 ﻿using Effects;
 using System;
 using System.Collections;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,10 +14,17 @@ namespace Player
         [SerializeField] private int maxHealth;
         [SerializeField] private float damageCooldown;
         [SerializeField] private AudioSource addHealthSound;
+        [SerializeField] private HealthUI healthUI;
 
         private bool canTakeDamage = true;
 
         public UnityEvent OnTakeDamageEvent;
+
+        private void Awake()
+        {
+            healthUI.SetUp(maxHealth);
+            healthUI.DisplayHealth(health);
+        }
 
         public void TakeDamage(int damageValue)
         {
@@ -31,7 +39,8 @@ namespace Player
             if (health <= 0) {
                 health = 0;
                 Die();
-            } 
+            }
+            healthUI.DisplayHealth(health);
         }
 
         public void AddHealth(int healthValue) {
@@ -40,6 +49,7 @@ namespace Player
                 health = maxHealth;
             }
             addHealthSound.Play();
+            healthUI.DisplayHealth(health);
         }
 
         private void Die()

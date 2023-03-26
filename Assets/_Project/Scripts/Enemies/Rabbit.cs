@@ -1,21 +1,14 @@
-﻿using Player;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Animations;
+using Player;
 using UnityEngine;
 
 namespace Enemies
 {
-    internal class Rabbit : MonoBehaviour
+    internal class Rabbit : BaseEnemy
     {
         [SerializeField] private Animator animator;
-        [SerializeField] private float agressiveDistance;
 
         private Transform playerTransform;
-
-        public static int Attack = Animator.StringToHash("isAttack");
 
         private void Awake()
         {
@@ -24,16 +17,16 @@ namespace Enemies
         }
 
         private void Update() {
-            if (animator.GetBool(Attack)) return;
+            if (animator.GetBool(AnimationsStrings.IsAttack)) return;
 
             var playerDistance = (playerTransform.position - transform.position).magnitude;
 
             if (playerDistance <= agressiveDistance)
-                animator.SetBool(Attack, true);
+                animator.SetBool(AnimationsStrings.IsAttack, true);
         }
 
-        public void ResetAttarck() {
-            animator.SetBool(Attack, false);
+        public override void ResetAttackAnimation(object obj) {
+            animator.SetBool(AnimationsStrings.IsAttack, false);
         }
     }
 }

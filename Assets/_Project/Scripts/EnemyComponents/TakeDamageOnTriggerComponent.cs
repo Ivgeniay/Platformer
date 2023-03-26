@@ -15,11 +15,14 @@ namespace EnemyComponents
 
         private void OnTriggerEnter(Collider collision)
         {
-            var bullt = collision.gameObject.GetComponentInParent<Bullet>();
-            if (bullt)
+            if (collision.attachedRigidbody)
             {
-                healthComponent.TakeDamage(bullt.Damage);
-                bullt.DestroyBullet();
+                var bullt = collision.attachedRigidbody.GetComponent<Bullet>();//collision.gameObject.GetComponentInParent<Bullet>();
+                if (bullt)
+                {
+                    healthComponent.TakeDamage(bullt.Damage);
+                    bullt.DestroyBullet();
+                }
             }
         }
     }

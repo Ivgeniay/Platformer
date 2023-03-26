@@ -1,9 +1,9 @@
 ﻿using Player;
 using UnityEngine;
 
-namespace Enemies
+namespace Enemies.Bullets
 {
-    internal class Carrot : MonoBehaviour
+    internal class Carrot : BaseEnemyBullet
     {
         [SerializeField] private float speed;
         [SerializeField] private float maxLifetime = 5;

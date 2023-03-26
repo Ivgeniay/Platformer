@@ -1,9 +1,24 @@
 using PlayerInput;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using UnityEngine;
 
 namespace Player
 {
+    class PlayerDataBase
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int CityId { get; set; }
+    }
+    class CityDB
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
     public class PlayerMove : MonoBehaviour
     {
         [SerializeField] private float moveForce;
@@ -36,10 +51,13 @@ namespace Player
             rigidBody = GetComponent<Rigidbody>();
         }
 
-        private void OnEnable() {
+
+        private void OnEnable()
+        {
             Subscribe();
         }
-        private void OnDisable() {
+        private void OnDisable()
+        {
             Unsubscribe();
         }
 
@@ -104,6 +122,7 @@ namespace Player
                 ForceMode.Acceleration);
         private void SetDrag(Rigidbody rigidb, float friction) =>
             rigidb.AddForce(-rigidb.velocity.x * friction, 0, 0, ForceMode.Acceleration);
+
 
     }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace EnemyComponents
@@ -13,11 +14,11 @@ namespace EnemyComponents
             health -= damageValue;
             OnTakeDamageEvent?.Invoke();
 
-            if (health <= 0)
-            {
+            if (health <= 0) {
                 Die();
             }
         }
+
 
         private void Die() {
             Destroy(gameObject);

@@ -9,9 +9,12 @@ namespace EnemyComponents
 
         private void OnTriggerEnter(Collider other)
         { 
-            var playerHelth = other.GetComponentInParent<PlayerHealth>();
-            if (playerHelth) {
-                playerHelth.TakeDamage(damage);
+            if (other.attachedRigidbody)
+            {
+                var playerHelth = other.attachedRigidbody.GetComponent<PlayerHealth>(); //other.GetComponentInParent<PlayerHealth>();
+                if (playerHelth) {
+                    playerHelth.TakeDamage(damage);
+                }
             }
             
         }

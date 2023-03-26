@@ -2,6 +2,6 @@
 {
     internal interface IEffect
     {
-        public void GetEffect();
+        public void StartEffect();
     }
 }

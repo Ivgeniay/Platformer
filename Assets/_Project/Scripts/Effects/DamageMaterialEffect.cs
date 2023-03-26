@@ -11,21 +11,21 @@ namespace Effects
         private IEnumerator StartEffectRoutine(float fadeDelay) {
 
             for (float i = fadeDelay; i >= 0; i -= Time.deltaTime) {
-                foreach (Renderer renderer in renderers)
-                    foreach (Material material in renderer.materials)
-                        renderer.material.SetColor("_EmissionColor", new Color(Mathf.Sin(i * 30) * 0.5f + 0.5f, 0, 0, 0));
-                        
+                SerColor(new Color(Mathf.Sin(i * 30) * 0.5f + 0.5f, 0, 0, 0));
                 yield return null;
             }
 
-            foreach (Renderer r in renderers)
-                r.material.SetColor("_EmissionColor", Color.black);
-            
+            SerColor(Color.clear);
         }
 
-        public void GetEffect()
-        {
+        public void StartEffect() {
             StartCoroutine(StartEffectRoutine(fadeDelay));
+        }
+
+        private void SerColor(Color color) {
+            foreach (Renderer renderer in renderers)
+                foreach (Material material in renderer.materials)
+                    material.SetColor("_EmissionColor", color);
         }
     }
 }
