@@ -8,8 +8,6 @@ namespace Enemies
     {
         [SerializeField] private Animator animator;
 
-        private Transform playerTransform;
-
         private void Awake()
         {
             playerTransform = FindObjectOfType<PlayerMove>().transform;

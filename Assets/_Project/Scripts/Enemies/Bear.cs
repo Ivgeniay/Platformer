@@ -12,8 +12,6 @@ namespace Enemies
         [SerializeField] private float attackDelayPeriod;
         [SerializeField] private bool canAttack= true;
 
-        private Transform playerTransform;
-
         private void Awake()
         {
             playerTransform = FindObjectOfType<PlayerMove>().transform;

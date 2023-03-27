@@ -3,13 +3,11 @@ using UnityEngine;
 
 namespace Enemies
 {
-    internal class Hen : MonoBehaviour
+    internal class Hen : BaseEnemy
     {
         [SerializeField] private Rigidbody rb;
         [SerializeField] private float speed;
         [SerializeField] private float timeToReachSpeed;
-
-        private Transform playerTransform;
 
         private void Start()
         {
@@ -21,9 +19,14 @@ namespace Enemies
             Vector3 toPlayer = playerTransform.position - transform.position;
             toPlayer = toPlayer.normalized;
 
-            Vector3 force = rb.mass * (toPlayer * speed - rb.velocity)/timeToReachSpeed;
+            if (toPlayer.magnitude < agressiveDistance) {
+                Vector3 force = rb.mass * (toPlayer * speed - rb.velocity)/timeToReachSpeed;
+                rb.AddForce(force);
+            }
 
-            rb.AddForce(force);
         }
+
+        public override void ResetAttackAnimation(object obj)
+        { }
     }
 }
