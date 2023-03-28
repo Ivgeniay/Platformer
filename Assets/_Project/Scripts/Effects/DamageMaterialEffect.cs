@@ -8,6 +8,10 @@ namespace Effects
         [SerializeField] private Renderer[] renderers;
         [SerializeField] private float fadeDelay;
 
+        private void OnEnable() {
+            SerColor(Color.clear);
+        }
+
         private IEnumerator StartEffectRoutine(float fadeDelay) {
 
             for (float i = fadeDelay; i >= 0; i -= Time.deltaTime) {
