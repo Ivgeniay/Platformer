@@ -13,10 +13,18 @@ namespace Enemies
         [SerializeField] private Vector3[] vectorForces;
         private Animator animator;
 
-        private void Awake()
-        {
+        private Coroutine coroutine;
+
+        private void Awake() {
             animator = GetComponentInChildren<Animator>();
-            StartCoroutine(StartThrow(throwDelay));
+        }
+
+        private void OnEnable() {
+            coroutine = StartCoroutine(StartThrow(throwDelay));
+        }
+
+        private void OnDisable() {
+            if (coroutine is not null) StopCoroutine(coroutine);
         }
 
         private IEnumerator StartThrow(float delay)

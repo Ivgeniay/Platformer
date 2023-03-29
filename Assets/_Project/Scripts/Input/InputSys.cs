@@ -10,6 +10,9 @@ namespace PlayerInput
         public event Action OnJumpEvent;
         public event Action OnShootingStartedEvent;
         public event Action OnShootingEndedEvent;
+
+        public event Action<int> OnChangeGunEvent;
+
         public ObservableVariable<Vector3> mouseWorldPosition = new ObservableVariable<Vector3>();
 
         private Actions inputActions;
@@ -42,11 +45,21 @@ namespace PlayerInput
             inputActions.FPS.Jump.performed += JumpPerformed;
             inputActions.FPS.Shoot.performed += ShootPerformed;
             inputActions.FPS.Shoot.canceled += ShootEndPerformed;
+            inputActions.FPS.ChangePistol.performed += ChangePistolPerformed;
+            inputActions.FPS.ChangeMachineGun.performed += ChangeMachineGunPerformed;
         }
+
+        private void ChangePistolPerformed(InputAction.CallbackContext obj) =>
+            OnChangeGunEvent?.Invoke(1);
+        private void ChangeMachineGunPerformed(InputAction.CallbackContext obj) =>
+            OnChangeGunEvent?.Invoke(2);
+
         private void OnDisable() {
             inputActions.FPS.Jump.performed -= JumpPerformed; ;
             inputActions.FPS.Shoot.performed -= ShootPerformed;
             inputActions.FPS.Shoot.canceled -= ShootEndPerformed;
+            inputActions.FPS.ChangePistol.performed -= ChangePistolPerformed;
+            inputActions.FPS.ChangeMachineGun.performed -= ChangeMachineGunPerformed;
             inputActions.Disable();
         }
         void Update() {
@@ -70,6 +83,7 @@ namespace PlayerInput
 
         private void ShootEndPerformed(InputAction.CallbackContext obj) =>
             OnShootingEndedEvent?.Invoke();
+
 
     }
 }

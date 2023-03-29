@@ -40,6 +40,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ChangePistol",
+                    "type": "Button",
+                    "id": "bb70304e-6d05-4507-8557-5f5c9a1623ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeMachineGun",
+                    "type": "Button",
+                    "id": "938a6efa-8e38-412c-9596-7d022faccc9b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -183,6 +201,28 @@
                     "processors": "",
                     "groups": "Keyboard_Mouse",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19ffb7a1-2477-40a7-a3f0-86342c2fae87",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard_Mouse",
+                    "action": "ChangePistol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2fe98a4-82e9-496f-ba9d-a2d6e906a6eb",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard_Mouse",
+                    "action": "ChangeMachineGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

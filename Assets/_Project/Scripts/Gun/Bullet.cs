@@ -6,13 +6,15 @@ namespace Gun
     {
         [SerializeField] private ParticleSystem[] destroyEffect;
         [SerializeField] private float lifeTime = 2f;
+        public bool isLast { get; private set; }
         public int Damage { get; private set; }
         
         private void Awake() {
             Destroy(gameObject, lifeTime);
         }
-        public void SetUp(int damage) {
+        public void SetUp(int damage, bool isLast = false) {
             Damage = damage;
+            this.isLast = isLast;
         }
 
         private void OnCollisionEnter(Collision collision) {
