@@ -12,12 +12,17 @@ namespace Player
         public event Action<Gun.Gun> OnGunChangedEvent;
 
         [SerializeField] private List<Gun.Gun> gunList = new List<Gun.Gun>();
+        [SerializeField] private bool isUnscaleFire = true;
 
         public Gun.Gun CurrentGun { get; private set; }
         private Rigidbody rigidBody;
         private bool isTryingToShoot = false;
 
         private void Awake() {
+            gunList.ForEach(gun => {
+                gun.SetUp(isUnscaleFire);
+            });
+
             rigidBody = GetComponent<Rigidbody>();
             CurrentGun = ChangeGun(0, gunList);
         }

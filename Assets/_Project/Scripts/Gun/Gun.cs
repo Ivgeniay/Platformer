@@ -21,6 +21,7 @@ namespace Gun
         [SerializeField] private AudioSource shootSound;
         [SerializeField] private GameObject shootFlash;
 
+        private bool isUnscaleFire;
 
         private bool canShoot = true;
         private Coroutine gunTimeoutCoroutine = null;
@@ -59,12 +60,16 @@ namespace Gun
 
         private IEnumerator ShootTimerRoutine(float delay) { 
             canShoot = false;
-            yield return new WaitForSeconds(delay);
+
+            if (isUnscaleFire) yield return new WaitForSecondsRealtime(delay);
+            else yield return new WaitForSeconds(delay);
+
             canShoot = true;
         }
 
         private IEnumerator OffFlashRoutine(float delay) {
-            yield return new WaitForSeconds(delay);
+            if (isUnscaleFire) yield return new WaitForSecondsRealtime(delay);
+            else yield return new WaitForSeconds(delay);
             shootFlash.SetActive(false);
         }
 
@@ -73,6 +78,9 @@ namespace Gun
             OnAmmoChangetEvent?.Invoke(Ammo);
         }  
         
+        public void SetUp(bool isUnscaleFire) {
+            this.isUnscaleFire = isUnscaleFire;
+        }
         
     }
 }

@@ -29,7 +29,6 @@ namespace Player
         [SerializeField] private LayerMask groundLayerMask;
         [SerializeField] private CapsuleCollider collider_;
         [SerializeField] private Transform modelTransform;
-        [SerializeField][Range(0, 1)] float scaleTime = 1;
 
 
         private bool isSquat = false;
@@ -62,7 +61,6 @@ namespace Player
         }
 
         void Update() {
-            Time.timeScale= scaleTime;
             inputMoving = InputSys.Instance.GetMoving();
             if (inputMoving.y < 0 || !isGrounded) isSquat = true;
 
