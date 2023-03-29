@@ -36,11 +36,12 @@ namespace PlayerInput
 
         #region Mono
         private void Awake() {
-            plane = new Plane(-Vector3.forward, Vector3.zero);
-            currentCamera = Camera.main;
             inputActions = new Actions();
         }
         private void OnEnable() {
+            plane = new Plane(-Vector3.forward, Vector3.zero);
+            currentCamera = Camera.main;
+
             inputActions.Enable();
             inputActions.FPS.Jump.performed += JumpPerformed;
             inputActions.FPS.Shoot.performed += ShootPerformed;
@@ -63,6 +64,7 @@ namespace PlayerInput
             inputActions.Disable();
         }
         void Update() {
+            if (currentCamera is null) currentCamera = Camera.main;
             var mousePos = GetMousePosition();
 
             Ray ray = currentCamera.ScreenPointToRay(mousePos);
@@ -73,6 +75,12 @@ namespace PlayerInput
 
         public Vector2 GetMoving() =>
             inputActions.FPS.Mooving.ReadValue<Vector2>();
+
+        public void SetInputActive(bool isActive) {
+            if (isActive) inputActions.Enable();
+            else inputActions.Disable();
+        }
+
 
         private Vector2 GetMousePosition() =>
             inputActions.FPS.MousePosition.ReadValue<Vector2>();

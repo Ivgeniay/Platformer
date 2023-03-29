@@ -19,7 +19,7 @@ namespace Enemies.System
         [SerializeField] private float distanceToActivate;
         [SerializeField] private bool isJob;
         private PlayerMove playerMove;
-        private List<BaseEnemy> enemies;
+        [SerializeField]private List<BaseEnemy> enemies;
 
 
         private void Start()
@@ -83,6 +83,7 @@ namespace Enemies.System
                 enemy.gameObject.SetActive(distance < minDistanceToActivate);
 
                 //Debug.Log($"Factorial 10: {GetFactorial(10)}");
+                
             });
         }
 
