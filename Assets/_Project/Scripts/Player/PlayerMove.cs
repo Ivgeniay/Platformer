@@ -24,6 +24,7 @@ namespace Player
         [SerializeField] private float moveForce;
         [SerializeField] private float maxSpeed;
         [SerializeField] private float jumpForce;
+        [SerializeField] private float jumpForceRope;
         [SerializeField] private float friction;
         [SerializeField] private float maxAngle;
         [SerializeField] private LayerMask groundLayerMask;
@@ -91,6 +92,11 @@ namespace Player
             }
         }
         #endregion
+        public void RopeJump() {
+            if (!isGrounded)
+                Jump(rigidBody, jumpForceRope);
+        }
+
         private void Subscribe() {
             InputSys.Instance.OnJumpEvent += OnJumpEventHandler;
         }
@@ -112,8 +118,12 @@ namespace Player
             if (isGrounded)
                 Jump(rigidBody, jumpForce);
         }
-        private void Jump(Rigidbody rigidb, float jumpForce) =>
+        private void Jump(Rigidbody rigidb, float jumpForce)
+        {
             rigidb.AddForce(0, jumpForce, 0, ForceMode.VelocityChange);
+            //rigidb.AddRelativeTorque(0, 0, 10, ForceMode.VelocityChange);
+        }
+
         private void SetPlayerForce(Rigidbody rigidbody, float speedMultiplier) =>
             rigidbody.AddForce(
                 inputMoving.x * moveForce * speedMultiplier, 0, 0,
