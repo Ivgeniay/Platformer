@@ -38,6 +38,7 @@ namespace Scripts.UI
         }
 
         public void Restart() {
+            InputSys.Instance.SetInputActive(true);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 

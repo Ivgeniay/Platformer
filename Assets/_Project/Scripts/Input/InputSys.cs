@@ -64,7 +64,7 @@ namespace PlayerInput
             inputActions.Disable();
         }
         void Update() {
-            if (currentCamera is null) currentCamera = Camera.main;
+            if (currentCamera == null) currentCamera = Camera.main;
             var mousePos = GetMousePosition();
 
             Ray ray = currentCamera.ScreenPointToRay(mousePos);

@@ -5,12 +5,12 @@ namespace Enemies.Bullets
 {
     internal class Acorn : BaseEnemyBullet
     {
-        private Rigidbody rigidbody;
+        private Rigidbody rigidb;
         private Vector3 velocity;
         private float maxRotationSpeed = 2;
 
         private void Awake() {
-            rigidbody = GetComponent<Rigidbody>();
+            rigidb = GetComponent<Rigidbody>();
         }
 
         public void SetUp(Vector3 velocity, float maxRorationSpeed = 1) {
@@ -18,8 +18,8 @@ namespace Enemies.Bullets
         }
 
         public void Throw() {
-            rigidbody.AddRelativeForce(velocity, ForceMode.VelocityChange);
-            rigidbody.angularVelocity = new Vector3(
+            rigidb.AddRelativeForce(velocity, ForceMode.VelocityChange);
+            rigidb.angularVelocity = new Vector3(
                 Random.Range(-maxRotationSpeed, maxRotationSpeed),
                 Random.Range(-maxRotationSpeed, maxRotationSpeed),
                 Random.Range(-maxRotationSpeed, maxRotationSpeed)

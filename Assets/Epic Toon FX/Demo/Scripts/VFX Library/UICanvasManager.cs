@@ -86,11 +86,11 @@ public class UICanvasManager : MonoBehaviour {
 	public void UIButtonClick(ButtonTypes buttonTypeClicked) {
 		switch (buttonTypeClicked) {
 		case ButtonTypes.Previous:
-			// Select Previous Prefab
+			// Select Previous prefab
 			SelectPreviousPE();
 			break;
 		case ButtonTypes.Next:
-			// Select Next Prefab
+			// Select Next prefab
 			SelectNextPE();
 			break;
 		default:

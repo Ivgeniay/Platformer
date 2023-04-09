@@ -20,6 +20,7 @@ namespace Gun
         [SerializeField] private float flashPeriod = 0.05f;
         [SerializeField] private AudioSource shootSound;
         [SerializeField] private GameObject shootFlash;
+        [SerializeField] private ParticleSystem smoke;
 
         private bool isUnscaleFire;
 
@@ -52,6 +53,8 @@ namespace Gun
                 bullet.SetUp(gunDamage, Ammo == 0 && !IsInfinityAmmo);
                 OnShootEvent?.Invoke();
                 OnAmmoChangetEvent?.Invoke(Ammo);
+
+                smoke.Play();
                 return bullet;
             }
 

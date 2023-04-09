@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4805132429179002668}
   - component: {fileID: 4805132429179002671}
   - component: {fileID: 4805132429179002670}
+  - component: {fileID: 8385878704313519892}
   m_Layer: 0
   m_Name: Hen
   m_TagString: Untagged
@@ -97,6 +98,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8385878704313519892}
+        m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
+        m_MethodName: Create
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4805132429179002657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1353bc4b66027ee4dac54dbc8c782116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agressiveDistance: 0
   rb: {fileID: 4805132429179002659}
   speed: 3
   timeToReachSpeed: 1
@@ -257,6 +274,20 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8385878704313519892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805132429179002662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f074279a7d7257b4f85c7c276b3adce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7925009854424943260, guid: e15af7d1327c92841a1d05732db4ed72, type: 3}
+  spawnPoint: {fileID: 4805132429179002658}
 --- !u!1 &4805132429234821371
 GameObject:
   m_ObjectHideFlags: 0

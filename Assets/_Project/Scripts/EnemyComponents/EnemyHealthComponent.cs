@@ -9,6 +9,7 @@ namespace EnemyComponents
         [SerializeField] private int health = 1;
 
         public UnityEvent OnTakeDamageEvent;
+        public UnityEvent OnDieEvent;
 
         public void TakeDamage(int damageValue) {
             health -= damageValue;
@@ -21,6 +22,7 @@ namespace EnemyComponents
 
 
         private void Die() {
+            OnDieEvent?.Invoke();
             Destroy(gameObject);
         }
     }
