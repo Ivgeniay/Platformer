@@ -1666,7 +1666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &264108948
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,7 +1982,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -3807,7 +3807,6 @@ MonoBehaviour:
   distanceToActivate: 20
   isJob: 0
   enemies:
-  - {fileID: 1553454481}
   - {fileID: 79420655}
   - {fileID: 84159285}
   - {fileID: 343098179}
@@ -3824,6 +3823,7 @@ MonoBehaviour:
   - {fileID: 1296631139}
   - {fileID: 1423855609}
   - {fileID: 1429966221}
+  - {fileID: 1553454481}
   - {fileID: 1590808682}
   - {fileID: 1608301587}
   - {fileID: 1871812928}
@@ -8935,8 +8935,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264952057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6577, y: 3.79, z: 0}
-  m_LocalScale: {x: 0.7322692, y: 10.549396, z: 1}
+  m_LocalPosition: {x: -2.6577, y: 13.4554, z: 0}
+  m_LocalScale: {x: 0.7322692, y: 29.878908, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 499633357}
@@ -15658,7 +15658,7 @@ Transform:
   m_GameObject: {fileID: 1983631680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -86.67, y: 27.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1692801500}
